@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <Container>
             <div>
-                <p>{copy} 2021</p>
+                <p>{copy} Aug 2021</p>
             </div>
         </Container>
     );
