@@ -10,8 +10,8 @@ export default function Home() {
                 <title>Emp Mgr</title>
             </Head>
             <Container>
-                <div className={"testing"}>
-                    <h1>Welcome to the Employee Manager System!</h1>
+                <div>
+                    <h1 className="text-center">Employee Manager System</h1>
                     <p>
                         Irure tempor ut incididunt exercitation sint eu voluptate ad duis
                         voluptate. In mollit culpa eiusmod irure magna incididunt minim.
@@ -21,7 +21,7 @@ export default function Home() {
                         mollit ea deserunt. Commodo proident in adipisicing do velit duis
                         commodo labore occaecat minim officia.
                     </p>
-                    <MyTable></MyTable>
+                    <MyTable/>
                 </div>
             </Container>
         </>
