@@ -1,18 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../styles/Home.module.css'
-import '../styles/globals.css'
 import MyNavHeader from "../components/layout/MyNavHeader.js";
 import MyFooter from "../components/layout/MyFooter";
-import {Container} from "react-bootstrap";
+import {useState} from "react";
 
-function MyApp({Component, pageProps}) {
+export default function MyApp({Component, pageProps}) {
+    const [modalMsg, setModalMsg] = useState("")
     return (
         <>
             <MyNavHeader/>
-            <Component {...pageProps} />
+            <Component {...pageProps} modalMsg={modalMsg} setModalMsg={setModalMsg}/>
             <MyFooter/>
         </>
     )
 }
 
-export default MyApp

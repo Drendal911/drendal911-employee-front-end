@@ -1,12 +1,12 @@
 import Head from "next/head";
-import {Container, Table} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import MyTable from "../components/layout/MyTable";
 
 export default function Home() {
     return (
         <>
             <Head>
-                <link rel="shortcut icon" href="/glass-monitor.ico"></link>
+                <link rel="shortcut icon" href="/glass-monitor.ico"/>
                 <title>Emp Mgr</title>
             </Head>
             <Container>
@@ -24,6 +24,7 @@ export default function Home() {
                     <MyTable/>
                 </div>
             </Container>
+
         </>
     );
 }

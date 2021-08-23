@@ -7,3 +7,11 @@ export function addEmployeePost(emp, setModalMsg) {
         setModalMsg(error.data)
     })
 }
+
+export function searchEmployeesPost(emp) {
+    axios.post("http://localhost:4000/employees/searchEmployees", emp).then(function (response){
+        console.log(response.data)
+    }).catch(function (error) {
+        console.log(error.data)
+    })
+}

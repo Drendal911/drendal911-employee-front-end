@@ -5,8 +5,9 @@ import {addEmployeePost} from "../http/dbMethods";
 import MyModal from "../components/layout/MyModal";
 
 
-export default function AddEmployee() {
-    const [modalMsg, setModalMsg] = useState("")
+export default function AddEmployee(props) {
+    const setModalMsg = props.setModalMsg
+    const modalMsg = props.modalMsg
     const [modalShow, setModalShow] = useState(false);
     const [employeeState, setEmployeeState] = useState({
         firstName: "",
@@ -18,10 +19,7 @@ export default function AddEmployee() {
 
     function inputChangeHandler(e) {
         setEmployeeState((prevState) => {
-                return {
-                    ...prevState,
-                    [e.target.name]: e.target.value
-                }
+                return {...prevState, [e.target.name]: e.target.value}
             }
         )
     }
