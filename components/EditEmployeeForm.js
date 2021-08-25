@@ -3,7 +3,15 @@ import '../styles/Home.module.css'
 import MyDatePicker from "./MyDatePicker";
 
 // The first three div's are what is centering the form
-export default function AddEmployeeForm(props) {
+export default function EditEmployeeForm(props) {
+    const selectedEmployee = props.selectedEmployee
+    const setSelectedEmployee = props.setSelectedEmployee
+
+
+    function button(e) {
+        console.log(selectedEmployee)
+    }
+
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -11,7 +19,21 @@ export default function AddEmployeeForm(props) {
 
                     <Form onSubmit={props.onSubmitClicked}>
                         <Container className="mt-2">
-                            <h1 className="text-center mb-4">Add Employee</h1>
+                            <h1 className="text-center mb-4">Edit Employee</h1>
+                            <Row className="justify-content-md-center">
+                                <Col>
+                                    <Form.Control
+                                        readOnly={true}
+                                        className={"text-center mb-2"}
+                                        id="inlineFormInput"
+                                        placeholder="UID"
+                                        name="_id"
+                                        type="text"
+                                        defaultValue={selectedEmployee._id}
+                                        onChange={props.inputChangeHandler}
+                                    />
+                                </Col>
+                            </Row>
                             <Row>
                                 <Col>
                                     <Form.Label htmlFor="inlineFormInput" visuallyHidden>
@@ -22,6 +44,7 @@ export default function AddEmployeeForm(props) {
                                         id="inlineFormInput"
                                         placeholder="First Name"
                                         name="firstName"
+                                        defaultValue={selectedEmployee.firstName}
                                         onChange={props.inputChangeHandler}
                                     />
                                 </Col>
@@ -34,6 +57,7 @@ export default function AddEmployeeForm(props) {
                                         id="inlineFormInput"
                                         placeholder="Middle Name"
                                         name="middleName"
+                                        value={selectedEmployee.middleName}
                                         onChange={props.inputChangeHandler}
                                     />
                                 </Col>
@@ -48,6 +72,7 @@ export default function AddEmployeeForm(props) {
                                         id="inlineFormInput"
                                         placeholder="Last Name"
                                         name="lastName"
+                                        value={selectedEmployee.lastName}
                                         onChange={props.inputChangeHandler}
                                     />
                                 </Col>
@@ -60,20 +85,22 @@ export default function AddEmployeeForm(props) {
                                         id="inlineFormInput"
                                         placeholder="Position"
                                         name="position"
+                                        value={selectedEmployee.position}
                                         onChange={props.inputChangeHandler}
                                     />
                                 </Col>
                             </Row>
                             <Container className="d-flex justify-content-center mt-3">
-                                <Row className="align-items-center">
+                                <Row>
                                     <Col>
                                         <MyDatePicker
-                                            employeeState={props.employeeState}
-                                            setEmployeeState={props.setEmployeeState}/>
+                                            employeeState={selectedEmployee}
+                                            setEmployeeState={setSelectedEmployee}/>
                                     </Col>
                                 </Row>
                             </Container>
-                            <Button type="submit" className="mb-2">Submit
+                            <Button onClick={button} type="submit" className="mb-2"
+                            >Submit
                             </Button>
                         </Container>
                     </Form>

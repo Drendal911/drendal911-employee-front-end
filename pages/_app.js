@@ -5,10 +5,26 @@ import {useState} from "react";
 
 export default function MyApp({Component, pageProps}) {
     const [modalMsg, setModalMsg] = useState("")
+    const [modalShow, setModalShow] = useState(false);
+    const [employeeState, setEmployeeState] = useState({
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        position: "",
+        birthDate: ""
+    })
+
     return (
         <>
             <MyNavHeader/>
-            <Component {...pageProps} modalMsg={modalMsg} setModalMsg={setModalMsg}/>
+            <Component {...pageProps}
+                       modalMsg={modalMsg}
+                       setModalMsg={setModalMsg}
+                       modalShow={modalShow}
+                       setModalShow={setModalShow}
+                       employeeState={employeeState}
+                       setEmployeeState={setEmployeeState}
+            />
             <MyFooter/>
         </>
     )

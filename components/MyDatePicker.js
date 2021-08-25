@@ -11,13 +11,13 @@ export default function MyDatePicker(props) {
             ...props.employeeState,
             birthDate: date
         })
-        console.log(props.employeeState)
     }
 
     return (
         <Container>
             <Card className="align-items-center">
-                <Card.Body>Birth Date</Card.Body>
+                {!props.employeeState.birthDate ? <Card.Body>Select Birth Date</Card.Body>
+                    : <Card.Body>Select Birth Date</Card.Body>}
             </Card>
             {!props.employeeState.birthDate ?
                 <Calendar
@@ -25,7 +25,7 @@ export default function MyDatePicker(props) {
                 maxDate={new Date()}
                 onChange={handleSelect}
             /> : <Calendar
-                    date={props.employeeState.birthDate}
+                    date={new Date(props.employeeState.birthDate)}
                     maxDate={new Date()}
                     onChange={handleSelect}
                 /> }

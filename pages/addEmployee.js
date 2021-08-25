@@ -1,6 +1,5 @@
 import AddEmployeeForm from "../components/AddEmployeeForm";
-import {useState} from "react";
-import {isValidAddEmployeeInput} from "../utils/utils";
+import {isValidEmployeeInput} from "../utils/utils";
 import {addEmployeePost} from "../http/dbMethods";
 import MyModal from "../components/layout/MyModal";
 
@@ -8,14 +7,10 @@ import MyModal from "../components/layout/MyModal";
 export default function AddEmployee(props) {
     const setModalMsg = props.setModalMsg
     const modalMsg = props.modalMsg
-    const [modalShow, setModalShow] = useState(false);
-    const [employeeState, setEmployeeState] = useState({
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        position: "",
-        birthDate: ""
-    })
+    const modalShow = props.modalShow
+    const setModalShow = props.setModalShow
+    const employeeState = props.employeeState
+    const setEmployeeState = props.setEmployeeState
 
     function inputChangeHandler(e) {
         setEmployeeState((prevState) => {
@@ -26,7 +21,18 @@ export default function AddEmployee(props) {
 
     async function onSubmitClicked(e) {
         e.preventDefault()
-        switch (isValidAddEmployeeInput(employeeState)) {
+
+        const validation = isValidEmployeeInput(employeeState)
+
+        if (validation === 'ok') {
+            addEmployeePost(employeeState, setModalMsg)
+            setModalShow(true)
+        }else {
+            setModalMsg(validation)
+            setModalShow(true)
+        }
+
+        /*switch (isValidAddEmployeeInput(employeeState)) {
             case "firstName":
                 setModalMsg(`Please enter a first name with letters only. 
                 (First and last name, position, and birth date are required fields)`)
@@ -54,7 +60,7 @@ export default function AddEmployee(props) {
             default:
                 addEmployeePost(employeeState, setModalMsg)
                 setModalShow(true)
-        }
+        }*/
     }
 
     return (

@@ -1,8 +1,12 @@
 import Head from "next/head";
 import {Container} from "react-bootstrap";
 import MyTable from "../components/layout/MyTable";
+import MyOffCanvas from "../components/layout/MyOffCanvas";
 
-export default function Home() {
+export default function Home(props) {
+    const employeeState = props.employeeState
+    const setEmployeeState = props.setEmployeeState
+
     return (
         <>
             <Head>
@@ -22,6 +26,10 @@ export default function Home() {
                         commodo labore occaecat minim officia.
                     </p>
                     <MyTable/>
+                    <MyOffCanvas
+                        employeeState={employeeState}
+                        setEmployeeState={setEmployeeState}
+                    />
                 </div>
             </Container>
 

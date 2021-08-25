@@ -1,36 +1,41 @@
 import {Button, Offcanvas} from "react-bootstrap";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MySearchEmployeeForm from "../MySearchEmployeeForm";
 
 
-function OffCanvasExample({ name, ...props }) {
-    const [show, setShow] = useState(false);
+function OffCanvas({name, ...props}) {
+    const [showSearch, setShowSearch] = useState(false);
+    const searchResult = []
 
-    const handleClose = () => setShow(false);
-    const toggleShow = () => setShow((s) => !s);
+    const handleClose = () => setShowSearch(false);
+    const toggleShow = () => setShowSearch((s) => !s)
+
 
     return (
         <>
-            <Button variant="primary" onClick={toggleShow} className="me-2">
+            <Button variant="primary" onClick={toggleShow} className="me-2, mb-3">
                 {name}
             </Button>
-            <Offcanvas show={show} onHide={handleClose} {...props}>
+            <Offcanvas show={showSearch} onHide={handleClose} {...props}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Off canvas</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <MySearchEmployeeForm/>
+                    <MySearchEmployeeForm
+                        searchResult={searchResult}
+                    />
                 </Offcanvas.Body>
             </Offcanvas>
         </>
     );
 }
 
-export default function Example() {
+export default function MyOffCanvas(props) {
+
     const options = [
         {
-            name: 'Disable backdrop',
-            scroll: false,
+            name: 'Search',
+            scroll: true,
             backdrop: false,
         }
     ];
@@ -38,7 +43,8 @@ export default function Example() {
     return (
         <>
             {options.map((props, idx) => (
-                <OffCanvasExample key={idx} {...props}/>
+                <OffCanvas key={idx} {...props}
+                />
             ))}
         </>
     );

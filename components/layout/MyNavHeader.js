@@ -14,9 +14,7 @@ export default function MyNavHeader() {
                             navbarScroll
                         >
                             <Nav.Link href="/addEmployee">Add Employee</Nav.Link>
-                            <Nav.Link href="/searchEmployee">Search</Nav.Link>
                         </Nav>
-
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
