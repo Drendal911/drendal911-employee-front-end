@@ -22,6 +22,12 @@ export async function searchEmployeesPost(emp) {
     } catch (e) {
         return e
     }
+}
 
-
+export function addSalaryPost(salary) {
+    axios.post("http://localhost:4000/salary/addSalary", salary).then(function (response) {
+        console.log(response.data)
+    }).catch(function (error) {
+        console.log(error.data)
+    })
 }

@@ -1,16 +1,18 @@
+const alphaRegex = /[!@#$%^&*()_=0-9+<>/\\]/g
+const numRegex = /[!@#$%^&*()_\-=A-Za-z+<>/\\]/g
+const salaryRegex = /[!@#$%^&*()_=A-Za-z+<>/\\]/g
+let regex = ""
+let invalid = ""
 
-// Validate input fields
+// Validate employee input fields
 export function isValidEmployeeInput(state) {
-    let invalid = ""
-    const regex = /[!@#$%^&*()_=0-9+<>/\\]/g
-
-    if (!state.firstName || regex.test(state.firstName))
+    if (!state.firstName || alphaRegex.test(state.firstName))
         invalid = "firstName"
-    if (regex.test(state.middleName))
+    if (alphaRegex.test(state.middleName))
         invalid = "middleName"
-    if (!state.lastName || regex.test(state.lastName))
+    if (!state.lastName || alphaRegex.test(state.lastName))
         invalid = "lastName"
-    if (!state.position || regex.test(state.position))
+    if (!state.position || alphaRegex.test(state.position))
         invalid = "position"
     if (!state.birthDate)
         invalid = "birthDate"
@@ -33,6 +35,43 @@ export function isValidEmployeeInput(state) {
         default:
             return "ok"
     }
-
 }
 
+// Validate compensation input fields
+export function isValidCompensationInput(compensation) {
+    if (compensation.compType === "Salary") {
+        regex = salaryRegex
+    } else {
+        regex = numRegex
+    }
+
+    if (!compensation.compType || alphaRegex.test(compensation.compType))
+        invalid = "compType"
+    if (regex.test(compensation.amount) || regex.test(compensation.amount))
+        invalid = "amount"
+    if (!compensation.description && compensation.compType !== "Salary")
+        invalid = "description"
+    if (!compensation.date)
+        invalid = "date"
+
+    switch (invalid) {
+        case "compType":
+            return `Please select a compensation type.
+            (Type, amount, description, and date are required fields)`
+        case "amount":
+            return `Please enter a middle name with letters only.`
+        case "date":
+            return `Please enter a position. 
+                (Type, amount, description, and date are required fields)`
+        case "description": {
+            if (compensation.compType !== "Salary"){
+                return `Please enter a description. 
+                (Type, amount, description, and date are required fields)`
+            }
+            return "ok"
+        }
+        default:
+            return "ok"
+    }
+
+}

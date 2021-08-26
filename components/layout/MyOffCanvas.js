@@ -1,15 +1,13 @@
 import {Button, Offcanvas} from "react-bootstrap";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import MySearchEmployeeForm from "../MySearchEmployeeForm";
 
 
 function OffCanvas({name, ...props}) {
     const [showSearch, setShowSearch] = useState(false);
     const searchResult = []
-
     const handleClose = () => setShowSearch(false);
     const toggleShow = () => setShowSearch((s) => !s)
-
 
     return (
         <>

@@ -23,7 +23,6 @@ export default function AddEmployee(props) {
         e.preventDefault()
 
         const validation = isValidEmployeeInput(employeeState)
-
         if (validation === 'ok') {
             addEmployeePost(employeeState, setModalMsg)
             setModalShow(true)
@@ -31,36 +30,6 @@ export default function AddEmployee(props) {
             setModalMsg(validation)
             setModalShow(true)
         }
-
-        /*switch (isValidAddEmployeeInput(employeeState)) {
-            case "firstName":
-                setModalMsg(`Please enter a first name with letters only. 
-                (First and last name, position, and birth date are required fields)`)
-                setModalShow(true)
-                break
-            case "middleName":
-                setModalMsg(`Please enter a middle name with letters only.`)
-                setModalShow(true)
-                break
-            case "lastName":
-                setModalMsg(`Please enter a last name with letters only. 
-                (First and last name, position, and birth date are required fields)`)
-                setModalShow(true)
-                break
-            case "position":
-                setModalMsg(`Please enter a position. 
-                (First and last name, position, and birth date are required fields)`)
-                setModalShow(true)
-                break
-            case "birthDate":
-                setModalMsg(`Please select a birth date. 
-                (First and last name, position, and birth date are required fields)`)
-                setModalShow(true)
-                break
-            default:
-                addEmployeePost(employeeState, setModalMsg)
-                setModalShow(true)
-        }*/
     }
 
     return (

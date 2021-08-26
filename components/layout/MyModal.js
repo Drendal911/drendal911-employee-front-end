@@ -1,6 +1,7 @@
 import {Modal, Button} from "react-bootstrap";
 
 export default function MyModal(props) {
+
     return (
         <>
             <Modal show={props.show} onHide={props.onHide}>

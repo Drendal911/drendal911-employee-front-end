@@ -29,7 +29,7 @@ export default function Home(props) {
                     <MyOffCanvas
                         employeeState={employeeState}
                         setEmployeeState={setEmployeeState}
-                    />
+                        />
                 </div>
             </Container>
 

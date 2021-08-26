@@ -1,14 +1,8 @@
 import Link from "next/link";
 import {Button, Card} from "react-bootstrap";
 
-
 function EmployeeDetailsCard(props) {
-    const searchResult = props.searchResult
     const employee = props.employee
-
-    function onClickHandler(e) {
-        //console.log(employee)
-    }
 
     return (
         employee.birthDate === undefined ?
@@ -24,11 +18,30 @@ function EmployeeDetailsCard(props) {
                     <Card.Title>{employee.firstName} {employee.middleName} {employee.lastName}</Card.Title>
                     <div className="mb-2">
                         <div>Position: {employee.position}</div>
-                        <div>Birth Date: {employee.birthDate}</div>
+                        <div>Birth Date: {employee.birthDate.substring(0, 10)}</div>
                     </div>
-                    <Button variant="primary"
-                            onClick={onClickHandler}
-                    >Test Button</Button>
+                    <Link
+                        href={{
+                            pathname: "/addCompensation",
+                            query: {
+                                _id: employee._id
+                            }
+                        }}
+                    >
+                        <Button variant="primary" className="me-1 mb-1"
+                        >Add Compensation</Button>
+                    </Link>
+                    <Link
+                        href={{
+                            pathname: "/addCompensation",
+                            query: {
+                                _id: employee._id
+                            }
+                        }}
+                    >
+                        <Button variant="primary" className="mb-1"
+                        >View Compensation</Button>
+                    </Link>
                     <Link
                         href={{
                             pathname: "/editEmployee",
@@ -42,21 +55,22 @@ function EmployeeDetailsCard(props) {
                             }
                         }}
                     >
-                    <Button variant="primary" className="ms-2"
-                            onClick={onClickHandler}
-                    >Edit Employee</Button>
+                        <Button variant="primary"
+                        >Edit Employee</Button>
                     </Link>
-
                 </Card.Body>
             </Card>
     )
 }
 
-export default function MyEmployeeDetailsCard({searchResult}) {
-    const cards = searchResult.map((employee, _id) => <EmployeeDetailsCard key={_id} searchResult={searchResult}
-                                                                           employee={employee}/>)
+export default function MyEmployeeDetailsCard(props) {
+    const cards = props.searchResult.map((employee, _id) =>
+        <EmployeeDetailsCard key={_id}
+                             searchResult={props.searchResult}
+                             employee={employee}/>)
     return (
         <>{cards}</>
     )
 
 }
+

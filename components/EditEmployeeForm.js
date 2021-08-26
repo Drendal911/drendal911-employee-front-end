@@ -1,16 +1,10 @@
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import '../styles/Home.module.css'
-import MyDatePicker from "./MyDatePicker";
+import MyDatePicker from "./layout/MyDatePicker";
 
-// The first three div's are what is centering the form
 export default function EditEmployeeForm(props) {
     const selectedEmployee = props.selectedEmployee
     const setSelectedEmployee = props.setSelectedEmployee
-
-
-    function button(e) {
-        console.log(selectedEmployee)
-    }
 
     return (
         <div className="container">
@@ -99,7 +93,7 @@ export default function EditEmployeeForm(props) {
                                     </Col>
                                 </Row>
                             </Container>
-                            <Button onClick={button} type="submit" className="mb-2"
+                            <Button type="submit" className="mb-2"
                             >Submit
                             </Button>
                         </Container>
