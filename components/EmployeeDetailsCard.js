@@ -33,7 +33,7 @@ function EmployeeDetailsCard(props) {
                     </Link>
                     <Link
                         href={{
-                            pathname: "/addCompensation",
+                            pathname: "/viewCompensation",
                             query: {
                                 _id: employee._id
                             }

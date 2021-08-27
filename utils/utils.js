@@ -39,6 +39,7 @@ export function isValidEmployeeInput(state) {
 
 // Validate compensation input fields
 export function isValidCompensationInput(compensation) {
+    // Choose regex because salary has a different regex requirement than the rest
     if (compensation.compType === "Salary") {
         regex = salaryRegex
     } else {
@@ -47,7 +48,7 @@ export function isValidCompensationInput(compensation) {
 
     if (!compensation.compType || alphaRegex.test(compensation.compType))
         invalid = "compType"
-    if (regex.test(compensation.amount) || regex.test(compensation.amount))
+    if (!compensation.amount || regex.test(compensation.amount))
         invalid = "amount"
     if (!compensation.description && compensation.compType !== "Salary")
         invalid = "description"
@@ -57,16 +58,17 @@ export function isValidCompensationInput(compensation) {
     switch (invalid) {
         case "compType":
             return `Please select a compensation type.
-            (Type, amount, description, and date are required fields)`
+            (Type, amount, description [optional for Salary], and date are required fields)`
         case "amount":
-            return `Please enter a middle name with letters only.`
+            return `Please enter an amount.
+            (Type, amount, description [optional for Salary], and date are required fields)`
         case "date":
-            return `Please enter a position. 
-                (Type, amount, description, and date are required fields)`
+            return `Please select a date. 
+                (Type, amount, description [optional for Salary], and date are required fields)`
         case "description": {
             if (compensation.compType !== "Salary"){
                 return `Please enter a description. 
-                (Type, amount, description, and date are required fields)`
+                (Type, amount, description [optional for Salary], and date are required fields)`
             }
             return "ok"
         }
