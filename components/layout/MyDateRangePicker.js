@@ -14,7 +14,6 @@ export default function MyDateRangePicker(props) {
                 endDate: ranges.selection.endDate
             }
         })
-        console.log(dateRange);
     }
 
     const selectionRange = {

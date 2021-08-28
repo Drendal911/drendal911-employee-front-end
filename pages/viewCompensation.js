@@ -4,10 +4,8 @@ import {useState} from "react";
 import {Container} from "react-bootstrap";
 
 export default function ViewCompensation(props) {
-    const [dateRange, setDateRange] = useState({
-        startDate: new Date(),
-        endDate: new Date()
-    })
+    const dateRange = props.dateRange
+    const setDateRange = props.setDateRange
     const router = useRouter()
     const {
         query: {_id}
@@ -17,13 +15,15 @@ export default function ViewCompensation(props) {
     return (
         <Container>
             <ViewCompensationForm
-            eID={eID}
-            modalShow={props.modalShow}
-            setModalShow={props.setModalShow}
-            modalMsg={props.modalMsg}
-            setModalMsg={props.setModalMsg}
-            dateRange={dateRange}
-            setDateRange={setDateRange}
+                eID={eID}
+                modalShow={props.modalShow}
+                setModalShow={props.setModalShow}
+                modalMsg={props.modalMsg}
+                setModalMsg={props.setModalMsg}
+                dateRange={dateRange}
+                setDateRange={setDateRange}
+                monthlyTotals={props.monthlyTotals}
+                setMonthlyTotals={props.setMonthlyTotals}
             />
         </Container>
     )

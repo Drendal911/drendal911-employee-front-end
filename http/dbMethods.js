@@ -86,3 +86,13 @@ export function addAdjustmentPost(adjustment, setModalMsg) {
             setModalMsg(error.message);
         });
 }
+
+export async function searchCompensation(compensation) {
+    try {
+        return (
+            await axios.post("http://localhost:4000/compensation", compensation)
+        ).data;
+    } catch (e) {
+        return e.message;
+    }
+}

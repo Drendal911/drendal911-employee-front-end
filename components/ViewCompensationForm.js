@@ -1,8 +1,12 @@
 import {Button, Card, Row, Col, Container} from "react-bootstrap";
 import MyDateRangePicker from "./layout/MyDateRangePicker";
+import {searchCompensation} from "../http/dbMethods"
+import {adjustEndDate, adjustStartDate, findMonthlyTotals} from "../utils/utils";
+import {router} from "next/client";
 
 export default function ViewCompensationForm(props) {
-    const eID = props.eID
+    const monthlyTotals = props.monthlyTotals
+    const setMonthlyTotals = props.setMonthlyTotals
     const modalShow = props.modalShow
     const setModalShow = props.setModalShow
     const modalMsg = props.modalMsg
@@ -10,8 +14,16 @@ export default function ViewCompensationForm(props) {
     const dateRange = props.dateRange
     const setDateRange = props.setDateRange
 
-    function onClickHandler(e) {
-        console.log(dateRange)
+    async function onClickHandler(e) {
+        const compensation = {
+            eID: props.eID,
+            startDate: adjustStartDate(dateRange.startDate),
+            endDate: adjustEndDate(dateRange.endDate)
+        }
+        const search = await searchCompensation(compensation)
+
+        setMonthlyTotals(search)
+        await router.push('/monthlyCompensationTotals')
     }
 
     return (
@@ -32,7 +44,6 @@ export default function ViewCompensationForm(props) {
                     >Accept Dates</Button>
                 </Col>
                 <Col/>
-
             </Row>
         </Container>
     )

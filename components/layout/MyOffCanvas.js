@@ -16,7 +16,7 @@ function OffCanvas({name, ...props}) {
             </Button>
             <Offcanvas show={showSearch} onHide={handleClose} {...props}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Off canvas</Offcanvas.Title>
+                    <Offcanvas.Title>Employee Search</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <MySearchEmployeeForm
