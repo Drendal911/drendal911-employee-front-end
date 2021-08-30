@@ -1,24 +1,22 @@
-import {Container, Button} from "react-bootstrap";
+import {Container, Button, Row, Col} from "react-bootstrap";
 import MyCards from "../components/layout/MyCards";
 
 
 export default function MonthlyCompensationTotals(props) {
     const monthlyTotals = props.monthlyTotals
 
-    function onClickHandler(e) {
-        console.log(monthlyTotals)
-    }
-
     return (
-        <Container className="text-center">
+        <Container className="text-center mb-4">
             <Container className="mt-2 mb-4">
-                <h1>Monthly Compensation Totals</h1>
+                <h2>Monthly Compensation Totals</h2>
             </Container>
-
-            <MyCards monthlyTotals={monthlyTotals}/>
-            <Button className="mt-3 mb-3" onClick={onClickHandler}>Button</Button>
+            <Container>
+                <Row className="justify-content-center">
+                    <Col  sm="6" >
+                        <MyCards monthlyTotals={monthlyTotals}/>
+                    </Col>
+                </Row>
+            </Container>
         </Container>
     );
 }
-
-//

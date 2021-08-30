@@ -141,7 +141,7 @@ export default function AddCompensationForm(props) {
                                 className="mb-2"
                                 onClick={onAddCompensationClicked}
                             >
-                                Add Compensation
+                                Submit
                             </Button>
                         </Form>
                     </Col>

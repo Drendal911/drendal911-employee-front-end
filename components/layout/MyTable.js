@@ -1,35 +1,28 @@
-import { Table } from "react-bootstrap";
+import {Table} from "react-bootstrap";
 
-export default function MyTable() {
+export default function MyTable(props) {
+    const employeeList = props.employeeList
+    const rows = employeeList.map((employee, _id) =>
+        <tr
+            key={_id}>
+            <td>{employee._id}</td>
+            <td>{employee.firstName}</td>
+            <td>{employee.middleName}</td>
+            <td>{employee.lastName}</td>
+        </tr>
+    )
+
     return (
-        <Table striped bordered hover>
+        <Table striped bordered hover className="text-center">
             <thead>
             <tr>
-                <th>#</th>
+                <th>ID (Last 4)</th>
                 <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Last Name</th>
-                <th>Username</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td colSpan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
+            <tbody>{rows}</tbody>
         </Table>
     );
 };

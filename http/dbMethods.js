@@ -32,6 +32,16 @@ export async function searchEmployeesPost(emp) {
     }
 }
 
+export async function getAllEmployees() {
+    try {
+        return (
+            await axios.get("http://localhost:4000/employees")
+        ).data;
+    } catch (e) {
+        return e.message;
+    }
+}
+
 export function addSalaryPost(salary, setModalMsg) {
     axios
         .post("http://localhost:4000/salary/addSalary", salary)
@@ -91,6 +101,17 @@ export async function searchCompensation(compensation) {
     try {
         return (
             await axios.post("http://localhost:4000/compensation", compensation)
+        ).data;
+    } catch (e) {
+        return e.message;
+    }
+}
+
+export async function editCompensation(compensation) {
+    const connectionString = "http://localhost:4000/" + compensation.compType.toLowerCase() + "/edit" + compensation.compType
+    try {
+        return (
+            await axios.post(connectionString, compensation)
         ).data;
     } catch (e) {
         return e.message;

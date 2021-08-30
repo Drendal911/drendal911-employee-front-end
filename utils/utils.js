@@ -2,39 +2,26 @@ const alphaRegex = /[!@#$%^&*()_=0-9+<>/\\]/g
 const numRegex = /[!@#$%^&*()_\-=A-Za-z+<>/\\]/g
 const salaryRegex = /[!@#$%^&*()_=A-Za-z+<>/\\]/g
 let regex = ""
-let invalid = ""
+
 
 // Validate employee input fields
 export function isValidEmployeeInput(state) {
     if (!state.firstName || alphaRegex.test(state.firstName))
-        invalid = "firstName"
+        return `Please enter a first name with letters only. 
+                (First and last name, position, and birth date are required fields)`
     if (alphaRegex.test(state.middleName))
-        invalid = "middleName"
+        return `Please enter a middle name with letters only.`
     if (!state.lastName || alphaRegex.test(state.lastName))
-        invalid = "lastName"
+        return `Please enter a last name with letters only. 
+                (First and last name, position, and birth date are required fields)`
     if (!state.position || alphaRegex.test(state.position))
-        invalid = "position"
-    if (!state.birthDate)
-        invalid = "birthDate"
-
-    switch (invalid) {
-        case "firstName":
-            return `Please enter a first name with letters only. 
+        return `Please enter a position. 
                 (First and last name, position, and birth date are required fields)`
-        case "middleName":
-            return `Please enter a middle name with letters only.`
-        case "lastName":
-            return `Please enter a last name with letters only. 
+    if (!state.birthDate) {
+        return `Please select a birth date. 
                 (First and last name, position, and birth date are required fields)`
-        case "position":
-            return `Please enter a position. 
-                (First and last name, position, and birth date are required fields)`
-        case "birthDate":
-            return `Please select a birth date. 
-                (First and last name, position, and birth date are required fields)`
-        default:
-            return "ok"
     }
+    return "ok"
 }
 
 // Validate compensation input fields
@@ -47,34 +34,19 @@ export function isValidCompensationInput(compensation) {
     }
 
     if (!compensation.compType || alphaRegex.test(compensation.compType))
-        invalid = "compType"
+        return `Please select a compensation type.
+            (Type, amount, description [optional for Salary], and date are required fields)`
     if (!compensation.amount || regex.test(compensation.amount))
-        invalid = "amount"
+        return `Please enter an amount with numbers only.
+            (Type, amount, description [optional for Salary], and date are required fields)`
     if (!compensation.description && compensation.compType !== "Salary")
-        invalid = "description"
-    if (!compensation.date)
-        invalid = "date"
-
-    switch (invalid) {
-        case "compType":
-            return `Please select a compensation type.
-            (Type, amount, description [optional for Salary], and date are required fields)`
-        case "amount":
-            return `Please enter an amount.
-            (Type, amount, description [optional for Salary], and date are required fields)`
-        case "date":
-            return `Please select a date. 
+        return `Please enter a description. 
                 (Type, amount, description [optional for Salary], and date are required fields)`
-        case "description": {
-            if (compensation.compType !== "Salary") {
-                return `Please enter a description. 
+    if (!compensation.date) {
+        return `Please select a date. 
                 (Type, amount, description [optional for Salary], and date are required fields)`
-            }
-            return "ok"
-        }
-        default:
-            return "ok"
     }
+    return "ok"
 }
 
 // Set the day to the last day of the selected month
@@ -138,7 +110,7 @@ export function findMonthlyTotals(arr) {
             if (lastIndex === i) {
                 holdObject = {date: element.date, amount: element.amount}
                 returnArr.push(holdObject)
-            }else {
+            } else {
                 holdObject = {date: element.date, amount: element.amount}
                 amounts.push(element.amount)
             }
