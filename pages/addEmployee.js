@@ -1,8 +1,7 @@
 import AddEmployeeForm from "../components/AddEmployeeForm";
-import {isValidEmployeeInput} from "../utils/utils";
+import {capitalizeString, isValidEmployeeInput} from "../utils/utils";
 import {addEmployeePost} from "../http/dbMethods";
 import MyModal from "../components/layout/MyModal";
-
 
 export default function AddEmployee(props) {
     const setModalMsg = props.setModalMsg
@@ -14,7 +13,7 @@ export default function AddEmployee(props) {
 
     function inputChangeHandler(e) {
         setEmployeeState((prevState) => {
-                return {...prevState, [e.target.name]: e.target.value}
+                return {...prevState, [e.target.name]: capitalizeString(e.target.value)}
             }
         )
     }
@@ -26,7 +25,7 @@ export default function AddEmployee(props) {
         if (validation === 'ok') {
             addEmployeePost(employeeState, setModalMsg)
             setModalShow(true)
-        }else {
+        } else {
             setModalMsg(validation)
             setModalShow(true)
         }

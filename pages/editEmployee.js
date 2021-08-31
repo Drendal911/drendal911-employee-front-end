@@ -3,7 +3,7 @@ import EditEmployeeForm from "../components/EditEmployeeForm";
 import MyModal from "../components/layout/MyModal";
 import {Container} from "react-bootstrap";
 import {useState} from "react";
-import {isValidEmployeeInput} from "../utils/utils";
+import {capitalizeString, isValidEmployeeInput} from "../utils/utils";
 import {updateEmployeePost} from "../http/dbMethods";
 
 export default function EditEmployee(props) {
@@ -34,7 +34,7 @@ export default function EditEmployee(props) {
 
     function inputChangeHandler(e) {
         setSelectedEmployee((prevState) => {
-                return {...prevState, [e.target.name]: e.target.value}
+                return {...prevState, [e.target.name]: capitalizeString(e.target.value)}
             })
     }
 
@@ -50,7 +50,6 @@ export default function EditEmployee(props) {
             setModalMsg(validation)
             setModalShow(true)
         }
-
     }
 
     return (

@@ -16,7 +16,7 @@ export default function MyTable(props) {
         <Table striped bordered hover className="text-center">
             <thead>
             <tr>
-                <th>ID (Last 4)</th>
+                <th>Unique ID</th>
                 <th>First Name</th>
                 <th>Middle Name</th>
                 <th>Last Name</th>

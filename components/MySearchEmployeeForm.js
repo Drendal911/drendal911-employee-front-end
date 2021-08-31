@@ -2,6 +2,7 @@ import {Form, Button} from "react-bootstrap";
 import {useState, useRef} from "react";
 import {searchEmployeesPost} from "../http/dbMethods";
 import MyEmployeeDetailsCard from "./EmployeeDetailsCard";
+import {capitalizeString} from "../utils/utils";
 
 export default function MySearchEmployeeForm(props) {
     const firstNameRef = useRef("")
@@ -25,6 +26,10 @@ export default function MySearchEmployeeForm(props) {
     }
 
     function onClickHandler(e) {
+        if (searchInput.firstName) searchInput.firstName = capitalizeString(searchInput.firstName)
+        if (searchInput.middleName) searchInput.middleName = capitalizeString(searchInput.middleName)
+        if (searchInput.lastName) searchInput.lastName = capitalizeString(searchInput.lastName)
+
         searchEmployeesPost(searchInput).then(result => {
             if (result.length === 0) {
                 setSearchResult(["0 results found."])
