@@ -1,4 +1,4 @@
-import {Form, Button} from "react-bootstrap";
+import {Form, Button, FormLabel} from "react-bootstrap";
 import {useState, useRef} from "react";
 import {searchEmployeesPost} from "../http/dbMethods";
 import MyEmployeeDetailsCard from "./EmployeeDetailsCard";
@@ -40,14 +40,12 @@ export default function MySearchEmployeeForm(props) {
     }
 
     function inputChangeHandler(e) {
-        setSearchInput(prevState => {
-            return {...prevState, [e.target.name]: e.target.value}
-        })
+        setSearchInput(prevState => { return {...prevState, [e.target.name]: e.target.value} })
     }
 
     return (
         <Form>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-2">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="input"
                               placeholder="John"
@@ -58,7 +56,7 @@ export default function MySearchEmployeeForm(props) {
                 <Form.Text className="text-muted"/>
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-2">
                 <Form.Label>Middle Name</Form.Label>
                 <Form.Control type="input"
                               placeholder="Micheal"
@@ -69,7 +67,7 @@ export default function MySearchEmployeeForm(props) {
                 <Form.Text className="text-muted"/>
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-1">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="input"
                               placeholder="Doe"
@@ -79,7 +77,7 @@ export default function MySearchEmployeeForm(props) {
                               onChange={inputChangeHandler}/>
                 <Form.Text className="text-muted"/>
             </Form.Group>
-
+            <FormLabel className="mb-3">(Use any combination of first, middle, or last name)</FormLabel>
 
             <Button variant="outline-secondary"
                     onClick={onClearHandler}>
