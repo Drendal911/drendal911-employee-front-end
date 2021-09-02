@@ -10,12 +10,12 @@ export default function MonthDetails(props) {
     } = router
     let total = 0
 
-    if (selectedDate) {
+    //if (selectedDate) {
         const stringDate = `${selectedDate.substring(3, 7)}-${selectedDate.substring(0, 2)}`
         const filteredMonths = monthlyTotals.filter(month => month.date.includes(stringDate))
         total = filteredMonths.reduce((accumulator, month) => {return [...accumulator, month.amount]}, [])
             .reduce((accumulator, amount) => {return accumulator + amount}, 0)
-    }
+    //}
 
 
     return (
