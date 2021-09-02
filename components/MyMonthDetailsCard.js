@@ -43,6 +43,7 @@ export default function MyMonthDetailsCard(props) {
     let selectedDate
     let cards
 
+    if (props.monthlyTotals.length > 0 && props.selectedDate) {
         monthlyTotals = props.monthlyTotals
         selectedDate = props.selectedDate
         const stringDate = `${props.selectedDate.substring(3, 7)}-${props.selectedDate.substring(0, 2)}`
@@ -54,9 +55,8 @@ export default function MyMonthDetailsCard(props) {
                          selectedDate={selectedDate}
             />
         )
-
         return ( <> {cards} </> )
-    }/*else {
+    }else {
         const month = {
             compType: "",
             amount: 0,
@@ -71,4 +71,5 @@ export default function MyMonthDetailsCard(props) {
                               selectedDate={selectedDate}
         /> )
     }
-}*/
+
+}
