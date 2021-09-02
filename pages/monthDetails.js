@@ -1,4 +1,4 @@
-import {Button, Container, Card, Row, Col} from "react-bootstrap";
+import {Container, Card, Row, Col} from "react-bootstrap";
 import MyMonthDetailsCard from "../components/MyMonthDetailsCard";
 import {useRouter} from "next/router";
 
@@ -8,10 +8,15 @@ export default function MonthDetails(props) {
     const {
         query: {selectedDate, id}
     } = router
-    const stringDate = `${selectedDate.substring(3, 7)}-${selectedDate.substring(0, 2)}`
-    const filteredMonths = monthlyTotals.filter(month => month.date.includes(stringDate))
-    const total = filteredMonths.reduce((accumulator, month) => {return [...accumulator, month.amount]}, [])
-        .reduce((accumulator, amount) => {return accumulator + amount}, 0)
+    let total = 0
+
+    if (selectedDate) {
+        const stringDate = `${selectedDate.substring(3, 7)}-${selectedDate.substring(0, 2)}`
+        const filteredMonths = monthlyTotals.filter(month => month.date.includes(stringDate))
+        total = filteredMonths.reduce((accumulator, month) => {return [...accumulator, month.amount]}, [])
+            .reduce((accumulator, amount) => {return accumulator + amount}, 0)
+    }
+
 
     return (
         <>

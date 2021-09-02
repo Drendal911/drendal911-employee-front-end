@@ -39,21 +39,38 @@ function DetailsCard(props) {
 }
 
 export default function MyMonthDetailsCard(props) {
-    const monthlyTotals = props.monthlyTotals
-    const selectedDate = props.selectedDate
-    const stringDate = `${props.selectedDate.substring(3, 7)}-${props.selectedDate.substring(0, 2)}`
-    const updatedMonths = monthlyTotals.filter(month => month.date.includes(stringDate))
-    const cards = updatedMonths.map((month, _id) =>
-        <DetailsCard key={_id}
-                     month={month}
-                     stringDate={stringDate}
-                     selectedDate={selectedDate}
-        />
-    )
+    let monthlyTotals
+    let selectedDate
+    let cards
 
-    return (
-        <>
-            {cards}
-        </>
-    )
+    if (monthlyTotals && selectedDate) {
+        monthlyTotals = props.monthlyTotals
+        selectedDate = props.selectedDate
+        const stringDate = `${props.selectedDate.substring(3, 7)}-${props.selectedDate.substring(0, 2)}`
+        const updatedMonths = monthlyTotals.filter(month => month.date.includes(stringDate))
+        cards = updatedMonths.map((month, _id) =>
+            <DetailsCard key={_id}
+                         month={month}
+                         stringDate={stringDate}
+                         selectedDate={selectedDate}
+            />
+        )
+
+        return ( <> {cards} </> )
+    }else {
+        const month = {
+            compType: "",
+            amount: 0,
+            description: ""
+        }
+        const stringDate = ""
+        const selectedDate = ""
+
+        return ( <DetailsCard
+                              month={month}
+                              stringDate={stringDate}
+                              selectedDate={selectedDate}
+        /> )
+    }
+
 }

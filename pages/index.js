@@ -2,7 +2,6 @@ import Head from "next/head";
 import {Container, Button, Card} from "react-bootstrap";
 import MyTable from "../components/layout/MyTable";
 import MyOffCanvas from "../components/layout/MyOffCanvas";
-import axios from "axios";
 import {useEffect, useState} from "react";
 import {getAllEmployees} from "../http/dbMethods";
 

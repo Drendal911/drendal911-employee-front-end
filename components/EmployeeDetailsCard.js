@@ -64,13 +64,19 @@ function EmployeeDetailsCard(props) {
 }
 
 export default function MyEmployeeDetailsCard(props) {
-    const cards = props.searchResult.map((employee, _id) =>
-        <EmployeeDetailsCard key={_id}
-                             searchResult={props.searchResult}
-                             employee={employee}/>)
-    return (
-        <>{cards}</>
-    )
-
+    try {
+        const cards = props.searchResult.map((employee, _id) =>
+            <EmployeeDetailsCard key={_id}
+                                 searchResult={props.searchResult}
+                                 employee={employee}/>)
+        return (
+            <>{cards}</>
+        )
+    } catch (e) {
+        const employee = { birthDate: undefined }
+        return (
+            <EmployeeDetailsCard employee={employee}/>
+        )
+    }
 }
 

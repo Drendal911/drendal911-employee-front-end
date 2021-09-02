@@ -10,7 +10,6 @@ export default function EditEmployeeForm(props) {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-6">
-
                     <Form onSubmit={props.onSubmitClicked}>
                         <Container className="mt-2">
                             <h1 className="text-center mb-4">Edit Employee</h1>
@@ -98,7 +97,6 @@ export default function EditEmployeeForm(props) {
                             </Button>
                         </Container>
                     </Form>
-
                 </div>
             </div>
         </div>

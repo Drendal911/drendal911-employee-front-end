@@ -2,9 +2,10 @@ import {Button, Card, Row, Col, Container} from "react-bootstrap";
 import MyDateRangePicker from "./layout/MyDateRangePicker";
 import {searchCompensation} from "../http/dbMethods"
 import {adjustEndDate, adjustStartDate, findMonthlyTotals} from "../utils/utils";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 export default function ViewCompensationForm(props) {
+    const router = useRouter()
     const monthlyTotals = props.monthlyTotals
     const setMonthlyTotals = props.setMonthlyTotals
     const modalShow = props.modalShow

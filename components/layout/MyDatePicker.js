@@ -2,7 +2,7 @@ import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import Calendar from "react-date-range/dist/components/Calendar";
 import {Container, Card} from "react-bootstrap";
-import {useRef, useState} from "react";
+import {useState} from "react";
 
 
 export default function MyDatePicker(props) {
