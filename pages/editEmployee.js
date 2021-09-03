@@ -40,7 +40,6 @@ export default function EditEmployee(props) {
 
     async function onSubmitClicked(e) {
         e.preventDefault()
-
         const validation = isValidEmployeeInput(selectedEmployee)
 
         if (validation === 'ok') {

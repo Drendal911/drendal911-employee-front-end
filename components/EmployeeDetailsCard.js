@@ -1,8 +1,17 @@
 import Link from "next/link";
 import {Button, Card} from "react-bootstrap";
+import {deleteEmployeesByIdPost} from "../http/dbMethods";
+import {useRouter} from "next/router";
 
 function EmployeeDetailsCard(props) {
+    const router = useRouter()
     const employee = props.employee
+
+    function onDeleteEmployeeClicked() {
+        deleteEmployeesByIdPost(employee._id).then(() => {
+            router.reload()
+        })
+    }
 
     return (
         employee.birthDate === undefined ?
@@ -58,6 +67,11 @@ function EmployeeDetailsCard(props) {
                         <Button variant="primary"
                         >Edit Employee</Button>
                     </Link>
+                    <Button
+                        className="ms-1"
+                        variant="primary"
+                        onClick={onDeleteEmployeeClicked}
+                    >Delete Employee</Button>
                 </Card.Body>
             </Card>
     )

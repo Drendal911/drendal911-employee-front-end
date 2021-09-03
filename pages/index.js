@@ -10,6 +10,9 @@ export default function Home(props) {
     const setEmployeeState = props.setEmployeeState
     const [employeeList, setEmployeeList] = useState([])
 
+
+
+
     useEffect(function () {
         getAllEmployees().then((result) => {
             setEmployeeList([...result])

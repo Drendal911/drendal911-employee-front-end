@@ -1,6 +1,13 @@
 import {Modal, Button} from "react-bootstrap";
+import {useRouter} from "next/router";
 
 export default function MyModal(props) {
+    const router = useRouter()
+
+    function onCloseClicked() {
+        props.onHide()
+        router.push('/')
+    }
 
     return (
         <>
@@ -10,7 +17,10 @@ export default function MyModal(props) {
                 </Modal.Header>
                 <Modal.Body>{props.modalMsg}</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={props.onHide}>
+                    <Button
+                        variant="secondary"
+                        onClick={onCloseClicked}
+                    >
                         Close
                     </Button>
                 </Modal.Footer>
