@@ -7,53 +7,55 @@ import {deleteEmployeesByIdPost, searchEmployeesByIdPost} from "../../http/dbMet
 export default function MyTable(props) {
     const router = useRouter()
     const [showTableModal, setShowTableModal] = useState(false);
-    const [employeeById, setEmployeeById] = useState({
-        _id: '',
-        firstName: '',
-        middleName: '',
-        lastName: '',
-        position: '',
-        birthDate: ''
-    });
-    const [modalText, setModalText] = useState({
-        uniqueID: '',
-        name: ''
-    })
+
+
     const handleClose = () => setShowTableModal(false);
     const handleShow = () => setShowTableModal(true);
     const employeeList = props.employeeList
+    let modalText = ""
+    let employeeById = {
+        _id: "",
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        position: "",
+        birthDate: ""
+    }
 
     const onRowClick = (e) => {
-        const name = e.currentTarget.innerText.substring(25)
-        const uniqueID = e.currentTarget.innerText.substring(0, 24)
-        searchEmployeesByIdPost(uniqueID).then(result => {
-            setEmployeeById(prevState => {
-                return {
-                    ...prevState,
-                    _id: uniqueID,
-                    firstName: result.firstName,
-                    middleName: result.middleName,
-                    lastName: result.lastName,
-                    position: result.position,
-                    birthDate: result.birthDate,
-                }
-            })
-        })
-        setModalText(prevState => {
-            return {
-                ...prevState,
-                uniqueID: uniqueID,
-                name: name
+        /*employeeById = {
+            ...employeeById,
+            _id: e.target.parentNode.childNodes[0].childNodes[0].data,
+            firstName: e.target.parentNode.childNodes[1].childNodes[0].data,
+            middleName: e.target.parentNode.childNodes[2].childNodes[0].data,
+            lastName: e.target.parentNode.childNodes[3].childNodes[0].data
+        }
+
+
+        //const uniqueID = String(e.target.parentNode.cells[0].firstChild)
+        searchEmployeesByIdPost(employeeById._id).then(result => {
+            console.log(result)
+            modalText = {
+                uniqueID: result._id,
+                name: `${result.firstName} ${result.middleName} ${result.lastName}`
             }
-        })
-        setTimeout(() => {
+
+            employeeById = {
+                _id: result._id,
+                firstName: result.firstName,
+                middleName: result.middleName,
+                lastName: result.lastName,
+                position: result.position,
+                birthDate: result.birthDate
+            }
             setShowTableModal(true)
-        }, 500)
+        }) */
     }
 
     const rows = employeeList.map((employee, _id) =>
         <tr onClick={onRowClick}
-            key={_id}>
+            key={_id}
+        >
             <td>{employee._id}</td>
             <td>{employee.firstName}</td>
             <td>{employee.middleName}</td>
@@ -62,7 +64,7 @@ export default function MyTable(props) {
     )
 
     function onDeleteEmployeeClicked() {
-        deleteEmployeesByIdPost(employeeById._id).then(result => {
+        deleteEmployeesByIdPost(employeeById._id).then(() => {
             router.reload()
         })
     }
@@ -80,10 +82,13 @@ export default function MyTable(props) {
                 </thead>
                 <tbody>{rows}</tbody>
             </Table>
-
-            <Modal show={showTableModal} onHide={handleClose}>
+{/*
+            <Modal
+                show={showTableModal}
+                onHide={handleClose}
+                employeeById={employeeById}>
                 <Modal.Header closeButton>
-                    <Modal.Title>ID: {modalText.uniqueID}</Modal.Title>
+                    <Modal.Title>ID: {employeeById._id}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="text-center">
                     <Card>
@@ -91,7 +96,6 @@ export default function MyTable(props) {
                         <p className="mb-2">BirthDate: {employeeById.birthDate.substring(0, 10)}</p>
                         <p className="mb-0">Position: {employeeById.position}</p></Card>
                 </Modal.Body>
-
                 <Modal.Footer>
                     <Container className="text-center">
                         <Link
@@ -139,7 +143,7 @@ export default function MyTable(props) {
                         >Delete Employee</Button>
                     </Container>
                 </Modal.Footer>
-            </Modal>
+            </Modal>*/}
         </>
     );
 };
