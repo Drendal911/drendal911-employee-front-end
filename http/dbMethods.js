@@ -35,7 +35,7 @@ export async function searchEmployeesPost(emp) {
 export async function searchEmployeesByIdPost(id) {
     try {
         return (
-            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/searchEmployeesById", emp)
+            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/searchEmployeesById", id)
         ).data;
     } catch (e) {
         return e.message;
@@ -45,7 +45,7 @@ export async function searchEmployeesByIdPost(id) {
 export async function deleteEmployeesByIdPost(id) {
     try {
         return (
-            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/deleteEmployeesById", emp)
+            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/deleteEmployeesById", id)
         ).data;
     } catch (e) {
         return e.message;
