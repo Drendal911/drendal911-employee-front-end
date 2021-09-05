@@ -35,8 +35,8 @@ export default function MyTable(props) {
                     position: result.position,
                     birthDate: result.birthDate
                 }
-            })
-            setShowTableModal(true)
+            }, setShowTableModal(true) )
+
         })
     }
 
@@ -81,7 +81,7 @@ export default function MyTable(props) {
                             <p className="mb-2">
                                 {`Name: ${employeeById.firstName} ${employeeById.middleName} ${employeeById.lastName}`}
                             </p>
-                            <p className="mb-2">BirthDate: {employeeById.birthDate}</p>
+                            <p className="mb-2">BirthDate: {employeeById.birthDate.substring(0,10)}</p>
                             <p className="mb-0">Position: {employeeById.position}</p></Card>
                     </Modal.Body>
                     <Modal.Footer>
