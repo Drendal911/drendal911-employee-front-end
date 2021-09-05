@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {Container, Button, Card} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import MyTable from "../components/layout/MyTable";
 import MyOffCanvas from "../components/layout/MyOffCanvas";
 import {useEffect, useState} from "react";
@@ -10,9 +10,7 @@ export default function Home(props) {
     const setEmployeeState = props.setEmployeeState
     const [employeeList, setEmployeeList] = useState([])
 
-
-
-
+    // Populate the employee table
     useEffect(function () {
         getAllEmployees().then((result) => {
             setEmployeeList([...result])

@@ -4,7 +4,7 @@ import {searchEmployeesPost} from "../http/dbMethods";
 import MyEmployeeDetailsCard from "./EmployeeDetailsCard";
 import {capitalizeString} from "../utils/utils";
 
-export default function MySearchEmployeeForm(props) {
+export default function MySearchEmployeeForm() {
     const firstNameRef = useRef("")
     const lastNameRef = useRef("")
     const middleNameRef = useRef("")

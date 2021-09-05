@@ -5,7 +5,6 @@ import MySearchEmployeeForm from "../MySearchEmployeeForm";
 
 function OffCanvas({name, ...props}) {
     const [showSearch, setShowSearch] = useState(false);
-    const searchResult = []
     const handleClose = () => setShowSearch(false);
     const toggleShow = () => setShowSearch((s) => !s)
 
@@ -19,17 +18,14 @@ function OffCanvas({name, ...props}) {
                     <Offcanvas.Title>Employee Search</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <MySearchEmployeeForm
-                        searchResult={searchResult}
-                    />
+                    <MySearchEmployeeForm/>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
     );
 }
 
-export default function MyOffCanvas(props) {
-
+export default function MyOffCanvas() {
     const options = [
         {
             name: 'Search',
