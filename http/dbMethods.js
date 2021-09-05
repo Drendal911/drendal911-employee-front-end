@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function addEmployeePost(emp, setModalMsg) {
     axios
-        .post("http://localhost:4000/employees/addEmployee", emp)
+        .post("https://drendal911-employee-back-end.herokuapp.com/employees/addEmployee", emp)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -13,7 +13,7 @@ export function addEmployeePost(emp, setModalMsg) {
 
 export function updateEmployeePost(emp, setModalMsg) {
     axios
-        .post("http://localhost:4000/employees/updateEmployee", emp)
+        .post("https://drendal911-employee-back-end.herokuapp.com/employees/updateEmployee", emp)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -25,7 +25,7 @@ export function updateEmployeePost(emp, setModalMsg) {
 export async function searchEmployeesPost(emp) {
     try {
         return (
-            await axios.post("http://localhost:4000/employees/searchEmployees", emp)
+            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/searchEmployees", emp)
         ).data;
     } catch (e) {
         return e.message;
@@ -35,7 +35,7 @@ export async function searchEmployeesPost(emp) {
 export async function searchEmployeesByIdPost(id) {
     try {
         return (
-            await axios.post("http://localhost:4000/employees/searchEmployeesById", {id})
+            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/searchEmployeesById", emp)
         ).data;
     } catch (e) {
         return e.message;
@@ -45,7 +45,7 @@ export async function searchEmployeesByIdPost(id) {
 export async function deleteEmployeesByIdPost(id) {
     try {
         return (
-            await axios.post("http://localhost:4000/employees/deleteEmployeesById", {id})
+            await axios.post("https://drendal911-employee-back-end.herokuapp.com/employees/deleteEmployeesById", emp)
         ).data;
     } catch (e) {
         return e.message;
@@ -55,7 +55,7 @@ export async function deleteEmployeesByIdPost(id) {
 export async function getAllEmployees() {
     try {
         return (
-            await axios.get("http://localhost:4000/employees")
+            await axios.get("https://drendal911-employee-back-end.herokuapp.com/employees")
         ).data;
     } catch (e) {
         return e.message;
@@ -64,7 +64,7 @@ export async function getAllEmployees() {
 
 export function addSalaryPost(salary, setModalMsg) {
     axios
-        .post("http://localhost:4000/salary/addSalary", salary)
+        .post("https://drendal911-employee-back-end.herokuapp.com/salary/addSalary", salary)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -75,7 +75,7 @@ export function addSalaryPost(salary, setModalMsg) {
 
 export function addBonusPost(bonus, setModalMsg) {
     axios
-        .post("http://localhost:4000/bonus/addBonus", bonus)
+        .post("https://drendal911-employee-back-end.herokuapp.com/bonus/addBonus", bonus)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -86,7 +86,7 @@ export function addBonusPost(bonus, setModalMsg) {
 
 export function addCommissionPost(commission, setModalMsg) {
     axios
-        .post("http://localhost:4000/commission/addCommission", commission)
+        .post("https://drendal911-employee-back-end.herokuapp.com/commission/addCommission", commission)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -97,7 +97,7 @@ export function addCommissionPost(commission, setModalMsg) {
 
 export function addAllowancePost(allowance, setModalMsg) {
     axios
-        .post("http://localhost:4000/allowance/addAllowance", allowance)
+        .post("https://drendal911-employee-back-end.herokuapp.com/allowance/addAllowance", allowance)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -108,7 +108,7 @@ export function addAllowancePost(allowance, setModalMsg) {
 
 export function addAdjustmentPost(adjustment, setModalMsg) {
     axios
-        .post("http://localhost:4000/adjustment/addAdjustment", adjustment)
+        .post("https://drendal911-employee-back-end.herokuapp.com/adjustment/addAdjustment", adjustment)
         .then(function (response) {
             setModalMsg(response.data);
         })
@@ -120,7 +120,7 @@ export function addAdjustmentPost(adjustment, setModalMsg) {
 export async function searchCompensation(compensation) {
     try {
         return (
-            await axios.post("http://localhost:4000/compensation", compensation)
+            await axios.post("https://drendal911-employee-back-end.herokuapp.com/compensation", compensation)
         ).data;
     } catch (e) {
         return e.message;
@@ -128,7 +128,7 @@ export async function searchCompensation(compensation) {
 }
 
 export async function editCompensation(compensation) {
-    const connectionString = "http://localhost:4000/" + compensation.compType.toLowerCase() + "/edit" + compensation.compType
+    const connectionString = "https://drendal911-employee-back-end.herokuapp.com/" + compensation.compType.toLowerCase() + "/edit" + compensation.compType
     try {
         return (
             await axios.post(connectionString, compensation)
