@@ -8,6 +8,7 @@ import {useState} from "react";
 export default function MyDatePicker(props) {
     const setCompensationState = props.setCompensationState
     const compensationState = props.compensationState
+    const datePickerBodyText = props.datePickerBodyText
     const [dateDisplay, setDateDisplay] = useState({
         date: ''
     })
@@ -33,7 +34,7 @@ export default function MyDatePicker(props) {
     return (
         <Container>
             {!dateDisplay.date ? <Card className="align-items-center">
-                <Card.Body>Select Date</Card.Body>
+                <Card.Body>{datePickerBodyText}</Card.Body>
             </Card> : <Card className="align-items-center">
                 <Card.Body>{String(dateDisplay.date).substring(0, 10)}</Card.Body>
             </Card>}

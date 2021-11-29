@@ -28,7 +28,7 @@ export default function Home(props) {
                     <h1 className="text-center">Employee Management System</h1>
                     <p>
                         The Employee Management System is a platform where all important personal details of an employee
-                        are stored and managed securely. Using this system, employee management and other administrative
+                        are stored and managed. Using this system, employee management and other administrative
                         activities become quicker and easier.
 
                     </p>

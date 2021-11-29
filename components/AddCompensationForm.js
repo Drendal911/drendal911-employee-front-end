@@ -131,7 +131,9 @@ export default function AddCompensationForm(props) {
                                         <MyDatePicker name="date"
                                                       compensationState={compensationState}
                                                       setCompensationState={setCompensationState}
-                                                      onChange={inputChangeHandler}/>
+                                                      onChange={inputChangeHandler}
+                                                      datePickerBodyText={"Select Date"}
+                                        />
                                     </Col>
                                 </Row>
                             </Container>

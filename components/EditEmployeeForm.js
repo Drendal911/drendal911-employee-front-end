@@ -88,7 +88,8 @@ export default function EditEmployeeForm(props) {
                                     <Col>
                                         <MyDatePicker
                                             employeeState={selectedEmployee}
-                                            setEmployeeState={setSelectedEmployee}/>
+                                            setEmployeeState={setSelectedEmployee}
+                                            datePickerBodyText={"Select Birth Date"}/>
                                     </Col>
                                 </Row>
                             </Container>

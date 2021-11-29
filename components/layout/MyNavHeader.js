@@ -5,7 +5,7 @@ export default function MyNavHeader() {
         <div className="row justify-content-center">
             <Navbar bg="light" expand="lg">
                 <Container className="align-items-center">
-                    <Navbar.Brand href="/">Employee Manager</Navbar.Brand>
+                    <Navbar.Brand href="/">Home</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll"/>
                     <Navbar.Collapse id="navbarScroll">
                         <Nav

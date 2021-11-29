@@ -56,7 +56,9 @@ export default function AddEmployeeForm(props) {
                                             <Col>
                                                 <MyDatePicker
                                                     employeeState={props.employeeState}
-                                                    setEmployeeState={props.setEmployeeState}/>
+                                                    setEmployeeState={props.setEmployeeState}
+                                                    datePickerBodyText={"Select Birth Date"}
+                                                />
                                             </Col>
                                         </Row>
                                     </Container>
