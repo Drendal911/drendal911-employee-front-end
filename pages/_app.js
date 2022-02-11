@@ -1,4 +1,3 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MyNavHeader from "../components/layout/MyNavHeader.js";
 import MyFooter from "../components/layout/MyFooter";
